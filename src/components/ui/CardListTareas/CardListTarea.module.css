@@ -1,0 +1,49 @@
+.containerCardListTareas{
+    width: 96%;
+    background-color: #82390c;
+    border-radius: 0.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff9ec;
+    border-left: 7px solid #ffab32;
+    padding: 0.7rem;
+    overflow: hidden;
+}
+
+.actionCards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    
+}
+
+.actionCards > button{
+    width: 6vw;
+    padding: 0.2rem 0.5rem;
+    background-color: #ffcd6d;
+    color: #461a04;
+    border: 1px solid #ffcd6d;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.actionCards  > button:hover{
+    cursor: pointer;
+    background-color: #ffab32;
+    border: 1px solid  #ffab32;
+}
+
+.actionCards  > button:active{
+    background-color: #ff900a;
+    border: 1px solid  #ff900a;
+}
+
+.actionCards  > button:disabled{
+    background-color: #461a04;
+    border: 1px solid  #461a04;
+    color: #ff900a;
+}

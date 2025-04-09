@@ -1,0 +1,34 @@
+{
+    "tareas": [{
+     "id": 1,
+     "titulo": "Titulo 1",
+     "descripcion": "Esta es la descripcion 1.",
+     "fechaLimite": "2025-04-01"  
+    },
+    {
+        "id": 2,
+        "titulo": "Titulo 2",
+        "descripcion": "Esta es la descripcion 2.",
+        "fechaLimite": "2025-04-01"  
+    },
+    {
+        "id": 3,
+        "titulo": "Titulo 3",
+        "descripcion": "Esta es la descripcion 3.",
+        "fechaLimite": "2025-04-01"  
+    }
+    ],
+    "sprints": [{
+        "id": 1,
+        "nombre": "Sprint 1",
+        "fechaInicio": "2025-04-01",
+        "fechaCierre": "2025-04-08",
+        "tareas": [{
+            "id": 1,
+            "titulo": "Titulo 1",
+            "descripcion": "Esta es la descripcion 1.",
+            "fechaLimite": "2025-04-01"  
+           }
+        ]
+    }]
+}

@@ -1,0 +1,37 @@
+.containerHeader{
+    width: 100vw;
+    height: 5vh;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.containerTitleHeader{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: black;
+}
+
+.containerTitleHeader > h2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
+    width: 50vh;
+    height: 100%;
+    margin-left: 3rem;
+}
+
+.span1{
+    color: #ff7800;
+    font-weight: 800;
+}
+
+.span2{
+    color: #ffe3a5;
+    font-weight: 300;
+}

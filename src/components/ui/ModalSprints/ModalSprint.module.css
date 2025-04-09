@@ -1,0 +1,115 @@
+.containerModalSprints{
+    top: 0;
+    left:0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    backdrop-filter: blur(5px);
+    background-color: #2e2e2ebb;
+}
+/*#ff7800*/
+
+.contentPopUP{
+    width: 45%;
+    height: 50%;
+    background-color:  #18181b;
+    color: #ffcd6d;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+
+.formContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+}
+
+.formContent input, textarea {
+    width: 90%;
+    padding: 0.5rem;
+    resize: none;
+    margin: 10px;
+    background-color: #ffcd6d;
+    color: #461a04;
+    font-weight:800;
+    padding: 10px;
+}
+
+.formContent input::placeholder, textarea::placeholder { 
+    color: #461a04;
+  }
+
+.buttonCards{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttonCards > button{
+    width: 10vw;
+    padding: 0.5rem 0.5rem;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.buttonAcept {
+    background-color: #ffcd6d;
+    color: #461a04;
+    border: 1px solid #ffcd6d;
+}
+
+.buttonCards  > .buttonAcept:hover{
+    cursor: pointer;
+    background-color: #ffab32;
+    border: 1px solid  #ffab32;
+}
+
+.buttonCards  > .buttonAcept:active{
+    background-color: #ff900a;
+    border: 1px solid  #ff900a;
+}
+
+.buttonCards  > .buttonAcept:disabled{
+    background-color: #461a04;
+    border: 1px solid  #461a04;
+    color: #ff900a;
+}
+
+
+.buttonCancel {
+    background-color: #ff2323;
+    color: #ffdddd;
+    border: 1px solid #ff2323;
+}
+
+
+.buttonCards  > .buttonCancel:hover{
+    cursor: pointer;
+    background-color: #ff0000;
+    border: 1px solid  #ff0000;
+}
+
+.buttonCards  > .buttonCancel:active{
+    background-color: #d70000;
+    border: 1px solid  #d70000;
+}
+
+.buttonCards  > .buttonCancel:disabled{
+    background-color: #500000;
+    border: 1px solid  #500000;
+    color: #d70000;
+}

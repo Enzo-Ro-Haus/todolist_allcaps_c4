@@ -1,0 +1,48 @@
+.containerCardListSprints{
+    width: 95%;
+    background-color: #ffe3a5;
+    border-radius: 0.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #461a04;
+    border-left: 7px solid #ff900a;
+    padding: 0.7rem;
+    
+}
+
+.actionCards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.actionCards > button{
+    width: 6vw;
+    padding: 0.2rem 0.5rem;
+    background-color: #ff900a;
+    color: #461a04;
+    border: 1px solid #ffcd6d;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.actionCards  > button:hover{
+    cursor: pointer;
+    background-color: #ff7800;
+    border: 1px solid  #ff7800;
+}
+
+.actionCards  > button:active{
+    background-color: #cc5702;
+    border: 1px solid  #cc5702;
+}
+
+.actionCards  > button:disabled{
+    background-color: #461a04;
+    border: 1px solid #461a04;
+    color: #cc5702;
+}

@@ -1,0 +1,77 @@
+.containerPrincipalListTareas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #ffcd6d;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    width: 60vw;
+    height: auto;
+    padding: 1rem 0rem;
+    background-color: #000000af;
+    color: #d7d7db;
+    scrollbar-width: thin;
+    scrollbar-color: #ff900a #ffcd6d;
+}
+
+.containerTitleAndButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    width: 90%;
+    height: 30%;
+    margin-bottom: 0.5rem;
+    color: #d7d7db;
+}
+
+.containerTitleAndButton > h2{
+    min-width: 20%;
+    max-width: 30%;
+    font-weight: 300;
+    color: #d7d7db;
+}
+
+.containerTitleAndButton > button{
+    height: 5vh;
+    width: 10vw;
+    padding: 0.2rem 0.5rem;
+    background-color: #ffcd6d;
+    color: #461a04;
+    border: 1px solid #ffcd6d;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
+
+.containerTitleAndButton > button:hover{
+    cursor: pointer;
+    background-color: #ffab32;
+    border: 1px solid  #ffab32;
+}
+
+.containerTitleAndButton > button:active{
+    background-color: #ff900a;
+    border: 1px solid  #ff900a;
+}
+
+.containerTitleAndButton > button:disabled{
+    background-color: #461a04;
+    border: 1px solid  #461a04;
+    color: #ff900a;
+}
+
+
+
+.containerList{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    min-height: 60vh;
+    max-height: 62vh;
+    overflow-x: hidden;
+    padding: 1rem;
+}

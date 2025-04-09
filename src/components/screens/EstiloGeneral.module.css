@@ -1,0 +1,28 @@
+.containerGeneral{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background-color: #0d0d10;*/
+    height: 100vh;
+    gap: 2rem;  
+
+
+    --dot-bg: black;
+  --dot-color: #ff900a;
+  --dot-size: 2px;
+  --dot-space: 30px;
+	background:
+		linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		var(--dot-color);
+}
+
+.containerBody{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scrollbar-width: thin;
+    gap: 1rem;
+    overflow: hidden;
+}
