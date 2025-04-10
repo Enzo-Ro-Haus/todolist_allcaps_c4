@@ -1,0 +1,36 @@
+.tareasBacklog_container {
+    width: 100%;
+    border-radius: .5rem;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.tareasBacklog_input {
+    min-height: 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #dbead2;
+
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Ajusta el espacio entre elementos */
+}
+
+.tareasBacklog_buttonAction {
+    min-height: 1rem;
+    width: 2rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #dbead2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+}

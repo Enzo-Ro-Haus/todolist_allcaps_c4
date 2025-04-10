@@ -1,0 +1,32 @@
+.updateteTarea_form {
+    width: 30rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /*background-color: var(--white-color);*/
+    border-radius: 5px;
+}
+
+.updateTarea_tittle {
+    /*color: var(--palet-color-1);*/
+    font-size: 2rem;
+}
+
+.updateTarea_input {
+    height: 2rem;
+    border-radius: 5px;
+    border: 1px solid /*var(--gray-color)*/;
+}
+
+.updateTarea_containerButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.updateTarea_button {
+    width: 10rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: 1px solid /*var(--gray-color)*/;
+}
