@@ -2,6 +2,8 @@ import { FC, useState } from "react";
 import { ICreateTarea } from "../../../../../types/Tarea/ICreateTarea";
 import { useBacklogStore } from "../../../../../store/backlogStore";
 import { addTareaBacklogController } from "../../../../../data/backlogController";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import styles from "./CreateTarea.module.css";
 
 interface CreateTareaProps {
@@ -49,7 +51,7 @@ export const CreateTarea: FC<CreateTareaProps> = ({ onClose }) => {
                     onChange={(e) => setTitulo(e.target.value)}
                     required
                 />
-                <textarea
+                <input
                     className={styles.createTarea_input}
                     placeholder="Descripción"
                     value={descripcion}
@@ -63,14 +65,17 @@ export const CreateTarea: FC<CreateTareaProps> = ({ onClose }) => {
                     onChange={(e) => setFechaLimite(e.target.value)}
                     required
                 />
-                <div className={styles.createTarea_containerButtons}>
-                    <button type="button" className={styles.createTarea_button} onClick={onClose}>
+                <Stack direction="row" spacing={20} className={styles.createTarea_containerButtons}>
+                    <Button type="button" variant="contained" color="error"
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px" }}
+                    onClick={onClose}>
                         Cerrar
-                    </button>
-                    <button type="submit" className={styles.createTarea_button}>
+                    </Button>
+                    <Button type="submit" variant="contained" color="success"
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px" }}>
                         Crear
-                    </button>
-                </div>
+                    </Button>
+                </Stack>
             </form>
         </div>
     );

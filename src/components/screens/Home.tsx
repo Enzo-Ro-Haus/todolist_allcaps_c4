@@ -92,7 +92,7 @@ export const Home = () => {
                     </div>
                     <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
                         <h3 style={{ fontSize: "2rem", fontWeight: "normal" }}>Tareas en el Backlog</h3>
-                        <button className={styles.home_tareaButtonAdd} onClick={() => {console.log(showCreateTarea); setShowCreateTarea(true);}}><FaPlus /> Crear Tarea</button>
+                        <button className={styles.home_tareaButtonAdd} onClick={() => {console.log(showCreateTarea); setShowCreateTarea(true);}}>Crear Tarea <FaPlus /></button>
                     </div>
                     {tareas && tareas.length > 0 ? ( // Primero verificar que no sea undefined o null
                         tareas.map((tra) => (
