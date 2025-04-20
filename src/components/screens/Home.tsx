@@ -84,7 +84,7 @@ export const Home:FC<HomeProps> = ({vista}) =>{
                         </div>
                     </div>
                 </div>
-
+              
                 <div className={styles.home_contentVistas}>
                     {vista === "backlog" ? <Backlog /> : <TareasSprint />}
                 </div>
