@@ -1,6 +1,5 @@
 import { useSprintStore } from '../../../store/sprintStore';
 import { FaEye, FaEdit, FaTrash, FaArrowRight, FaPlus } from "react-icons/fa";
-import styles from './TareaSprint.module.css';
 import { useState } from 'react';
 import { CreateTareaSprint } from './Modals/CreateTareaSprint/CreateTareaSprint';
 import { DeleteTareaSprint } from './Modals/DeleteTareaSprint/DeleteTareaSprint';
@@ -8,6 +7,7 @@ import { UpdateTareaSprint } from './Modals/UpdateTareaSprint/UpdateTareaSprint'
 import { ViewTareaSprint } from './Modals/ViewTareaSprint/ViewTareaSprint';
 import { useBacklogStore } from '../../../store/backlogStore';
 import { API_URL } from '../../../utils/constantes';
+import styles from './TareaSprint.module.css'
 
 export const TareasSprint = () => {
     const sprint = useSprintStore(state => state.activeSprint);
@@ -37,6 +37,7 @@ export const TareasSprint = () => {
             ...tarea,
             estado: siguienteEstado
         });
+
     };
 
     const handleEnviarAlBacklog = async (tarea: any, sprintId: string) => {
