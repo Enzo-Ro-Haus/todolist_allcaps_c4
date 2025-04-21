@@ -7,15 +7,21 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "bdDev": "npx json-server --watch db.json --port 3000 ",
+    "server": "npx json-server --watch db.json --port 3000 ",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.0.2",
     "axios": "^1.8.4",
     "json-server": "^1.0.0-beta.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.4.0",
     "sweetalert2": "^11.17.2",
+    "todolist_allcaps_c4": "file:",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
