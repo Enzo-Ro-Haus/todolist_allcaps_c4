@@ -3,6 +3,8 @@ import styles from "./CreateSprint.module.css";
 import { ICreateSprint } from "../../../../../types/Sprint/ICreateSprint";
 import { addSprintController } from "../../../../../data/sprintController";
 import { useSprintStore } from "../../../../../store/sprintStore";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 interface CreateSprintProps {
     onClose: () => void;
@@ -42,13 +44,20 @@ export const CreateSprint: FC<CreateSprintProps> = ({ onClose }) => {
         <div className="overlay">
             <form className={styles.form} onSubmit={handleSubmit}>
                 <h3 className={styles.title}>Crear Sprint</h3>
-                <input type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
-                <input type="date" value={fechaInicio} onChange={(e) => setFechaInicio(e.target.value)} required />
-                <input type="date" value={fechaCierre} onChange={(e) => setFechaCierre(e.target.value)} required />
-                <div className={styles.buttons}>
-                    <button type="button" onClick={onClose}>Cerrar</button>
-                    <button type="submit">Crear</button>
-                </div>
+                <input className={styles.createSprint_input} type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+                <input className={styles.createSprint_input} type="date" value={fechaInicio} onChange={(e) => setFechaInicio(e.target.value)} required />
+                <input className={styles.createSprint_input} type="date" value={fechaCierre} onChange={(e) => setFechaCierre(e.target.value)} required />
+                <Stack direction="row" spacing={20} className={styles.createSprint_containerButtons}>
+                    <Button type="button" variant="contained" color="error"
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px" }}
+                    onClick={onClose}>
+                        Cerrar
+                    </Button>
+                    <Button type="submit" variant="contained" color="success"
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px" }}>
+                        Crear
+                    </Button>
+                </Stack>
             </form>
         </div>
     );

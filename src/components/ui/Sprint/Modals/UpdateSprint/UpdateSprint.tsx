@@ -2,6 +2,8 @@ import { FC, useState, useEffect } from "react";
 import styles from "./UpdateSprint.module.css";
 import { useSprintStore } from "../../../../../store/sprintStore";
 import { updateSprintController } from "../../../../../data/sprintController";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 interface Props {
     onClose: () => void;
@@ -44,13 +46,20 @@ export const UpdateSprint: FC<Props> = ({ onClose }) => {
         <div className="overlay">
             <form className={styles.form} onSubmit={handleSubmit}>
                 <h3 className={styles.title}>Editar Sprint</h3>
-                <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
-                <input type="date" value={fechaInicio} onChange={(e) => setFechaInicio(e.target.value)} required />
-                <input type="date" value={fechaCierre} onChange={(e) => setFechaCierre(e.target.value)} required />
-                <div className={styles.buttons}>
-                    <button type="button" onClick={onClose}>Cerrar</button>
-                    <button type="submit">Guardar</button>
-                </div>
+                <input className={styles.input} type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+                <input className={styles.input} type="date" value={fechaInicio} onChange={(e) => setFechaInicio(e.target.value)} required />
+                <input className={styles.input} type="date" value={fechaCierre} onChange={(e) => setFechaCierre(e.target.value)} required />
+            <Stack direction={"row"} spacing={20} className={styles.containerButtons}>
+                <Button type="button" variant="contained" color="error" 
+                sx={{ width: "10rem", height: "2rem", borderRadius: "5px"}}
+                onClick={onClose}>
+                    Cerrar
+                </Button>
+                <Button type="submit" variant="contained" color="success"
+                sx={{ width: "10rem", height: "2rem", borderRadius: "5px"}}>
+                    Aceptar
+                </Button>
+            </Stack>
             </form>
         </div>
     );

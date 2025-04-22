@@ -55,7 +55,7 @@ export const Backlog = () => {
 
             <p className={styles.backlog_tareaNoTareas}>No hay tareas en el backlog</p>
 
-        )};
+        )}
 
         {showUpdateTarea && <UpdateTarea onClose={() => setShowUpdateTarea(false)} />}
         {showDeleteTarea && <DeleteTarea onClose={() => setShowDeleteTarea(false)} />}

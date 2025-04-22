@@ -8,6 +8,8 @@ import { ViewTareaSprint } from './Modals/ViewTareaSprint/ViewTareaSprint';
 import { useBacklogStore } from '../../../store/backlogStore';
 import { API_URL } from '../../../utils/constantes';
 import styles from './TareaSprint.module.css'
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 export const TareasSprint = () => {
     const sprint = useSprintStore(state => state.activeSprint);
@@ -83,14 +85,15 @@ export const TareasSprint = () => {
     return (
         <div className={styles.tareaSprint_container}>
             <h2 className={styles.tareaSprint_title}>
-                Nombre de la sprint: <strong>{sprint.nombre}</strong>
+                Nombre de la sprint:  <strong>{sprint.nombre}</strong>
             </h2>
-            <div className={styles.tareaSprint_header}>
+            <Stack direction="row" spacing={20} className={styles.tareaSprint_header}>
                 <h3 className={styles.tareaSprint_subtitle}>Tareas en la sprint</h3>
-                <button className={styles.tareaSprint_buttonAdd} onClick={() => setShowCreateTareaSprint(true)}>
+                <Button type="submit" variant="contained" color="success"
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px" }} onClick={() => setShowCreateTareaSprint(true)}>
                     Crear tarea <FaPlus />
-                </button>
-            </div>
+                </Button>
+            </Stack>
             <div className={styles.tareaSprint_sections}>
                 {estados.map(({ key, label }) => (
                     <div key={key} className={styles.tareaSprint_column}>

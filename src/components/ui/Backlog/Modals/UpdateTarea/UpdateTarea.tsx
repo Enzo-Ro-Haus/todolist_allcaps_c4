@@ -1,6 +1,8 @@
 import { FC, useState, useEffect } from "react";
 import { updateTareaBacklogController } from "../../../../../data/backlogController";
 import { useBacklogStore } from "../../../../../store/backlogStore";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import styles from "./UpdateTarea.module.css";
 
 interface UpdateTareaProps {
@@ -54,7 +56,7 @@ export const UpdateTarea: FC<UpdateTareaProps> = ({ onClose }) => {
             onChange={(e) => setTitulo(e.target.value)}
             required
             />
-            <textarea
+            <input
             className={styles.updateTarea_input}
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
@@ -67,14 +69,17 @@ export const UpdateTarea: FC<UpdateTareaProps> = ({ onClose }) => {
             onChange={(e) => setFechaLimite(e.target.value)}
             required
             />
-            <div className={styles.updateTarea_containerButtons}>
-            <button type="button" className={styles.updateTarea_button} onClick={onClose}>
+            <Stack direction={"row"} spacing={20} className={styles.updateTarea_containerButtons}>
+            <Button type="button" variant="contained" color="error" 
+            sx={{ width: "10rem", height: "2rem", borderRadius: "5px"}}
+            onClick={onClose}>
                 Cerrar
-            </button>
-            <button type="submit" className={styles.updateTarea_button}>
+            </Button>
+            <Button type="submit" variant="contained" color="success"
+            sx={{ width: "10rem", height: "2rem", borderRadius: "5px"}}>
                 Aceptar
-            </button>
-            </div>
+            </Button>
+            </Stack>
         </form>
         </div>
     );
