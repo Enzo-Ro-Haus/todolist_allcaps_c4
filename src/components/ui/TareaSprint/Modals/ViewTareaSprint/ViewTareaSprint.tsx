@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { useSprintStore } from "../../../../../store/sprintStore";
 import styles from "./ViewTareaSprint.module.css";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 interface Props {
     onClose: () => void;
@@ -14,13 +16,15 @@ export const ViewTareaSprint: FC<Props> = ({ onClose }) => {
     return (
         <div className="overlay">
             <div className={styles.viewTarea_form}>
-                <h3 className={styles.viewTarea_tittle}>{tarea.titulo}</h3>
+                <h3 className={styles.viewTarea_title}>{tarea.titulo}</h3>
                 <p className={styles.viewTarea_text}><strong>Descripción:</strong> {tarea.descripcion}</p>
                 <p className={styles.viewTarea_text}><strong>Estado:</strong> {tarea.estado}</p>
                 <p className={styles.viewTarea_text}><strong>Fecha límite:</strong> {tarea.fechaLimite}</p>
-                <div className={styles.viewTarea_containerButtons}>
-                    <button className={styles.viewTarea_button} onClick={onClose}>Cerrar</button>
-                </div>
+                <Stack className={styles.view_containButtons}>
+                    <Button variant="contained" color="error" 
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px"}}
+                    onClick={() => onClose()}>Cerrar</Button>
+                </Stack>
             </div>
         </div>
     );

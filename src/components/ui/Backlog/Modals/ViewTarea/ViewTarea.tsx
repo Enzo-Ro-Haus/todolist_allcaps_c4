@@ -15,7 +15,7 @@ export const ViewTarea: FC<IViewTareaProps> = ({onClose}) => {
     return (
         <div className="overlay">
             <div className={styles.view_container}>
-                <h3 className={styles.view_tittle}>{tarea?.titulo}</h3>
+                <h3 className={styles.view_title}>{tarea?.titulo}</h3>
                 <div>
                     <p>{`Descripción: `}{tarea?.descripcion}</p>
                 </div>

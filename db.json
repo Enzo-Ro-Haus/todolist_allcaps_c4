@@ -3,15 +3,8 @@
     "tareas": [
       {
         "titulo": "aa",
-        "descripcion": "qq",
-        "estado": "pendiente",
-        "fechaLimite": "2025-04-16",
-        "id": "1744804448806"
-      },
-      {
-        "titulo": "aa",
         "descripcion": "aa",
-        "estado": "pendiente",
+        "estado": "en_progreso",
         "fechaLimite": "2025-04-12",
         "id": "1744812262947"
       }
@@ -33,6 +26,21 @@
             "fechaLimite": "2025-03-06"
           }
         ]
+      },
+      {
+        "nombre": "Valentín1",
+        "fechaInicio": "2003-09-17",
+        "fechaCierre": "2025-04-22",
+        "tareas": [
+          {
+            "titulo": "aa",
+            "descripcion": "qq",
+            "estado": "pendiente",
+            "fechaLimite": "2025-04-16",
+            "id": "1744804448806"
+          }
+        ],
+        "id": "1745346904320"
       }
     ]
   }
