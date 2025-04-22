@@ -1,4 +1,6 @@
 import { FC } from "react";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import styles from "./ViewTarea.module.css";
 import { useBacklogStore } from "../../../../../store/backlogStore";
 
@@ -15,16 +17,16 @@ export const ViewTarea: FC<IViewTareaProps> = ({onClose}) => {
             <div className={styles.view_container}>
                 <h3 className={styles.view_tittle}>{tarea?.titulo}</h3>
                 <div>
-                    <p style={{color: 'var(--palet-color-1)'}}>{`Descripción:`}</p>
-                    <p>{tarea?.descripcion}</p>
+                    <p>{`Descripción: `}{tarea?.descripcion}</p>
                 </div>
                 <div>
-                    <p style={{color: 'var(--palet-color-1)'}}></p>
-                    <p>{tarea?.fechaLimite}</p>
+                    <p>{"Fecha Límite: "}{tarea?.fechaLimite}</p>
                 </div>
-                <div className={styles.view_containButtons}>
-                    <button className={styles.view_button} onClick={() => onClose()}>Cerrar</button>
-                </div>
+                <Stack className={styles.view_containButtons}>
+                    <Button variant="contained" color="error" 
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px"}}
+                    onClick={() => onClose()}>Cerrar</Button>
+                </Stack>
             </div>
         </div>
     )
