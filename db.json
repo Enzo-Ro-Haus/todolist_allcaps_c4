@@ -3,10 +3,17 @@
     "tareas": [
       {
         "titulo": "aa",
-        "descripcion": "aa",
-        "estado": "en_progreso",
-        "fechaLimite": "2025-04-12",
-        "id": "1744812262947"
+        "descripcion": "qq",
+        "estado": "pendiente",
+        "fechaLimite": "2025-04-16",
+        "id": "1744804448806"
+      },
+      {
+        "titulo": "111",
+        "descripcion": "111",
+        "estado": "pendiente",
+        "fechaLimite": "0011-11-11",
+        "id": "1745416544764"
       }
     ]
   },
@@ -17,29 +24,13 @@
         "fechaInicio": "2025-03-04",
         "fechaCierre": "2025-03-11",
         "nombre": "Sprint 122",
-        "tareas": [
-          {
-            "id": "50699dec-3d1a-45ff-a94d-82d416eac053",
-            "titulo": "Tarea 2",
-            "descripcion": "Estamos aca",
-            "estado": "pendiente",
-            "fechaLimite": "2025-03-06"
-          }
-        ]
+        "tareas": []
       },
       {
         "nombre": "Valentín1",
         "fechaInicio": "2003-09-17",
         "fechaCierre": "2025-04-22",
-        "tareas": [
-          {
-            "titulo": "aa",
-            "descripcion": "qq",
-            "estado": "pendiente",
-            "fechaLimite": "2025-04-16",
-            "id": "1744804448806"
-          }
-        ],
+        "tareas": [],
         "id": "1745346904320"
       },
       {
@@ -53,6 +44,13 @@
             "estado": "pendiente",
             "fechaLimite": "0234-03-12",
             "id": "1745349180596"
+          },
+          {
+            "titulo": "aa",
+            "descripcion": "aa",
+            "estado": "en_progreso",
+            "fechaLimite": "2025-04-12",
+            "id": "1744812262947"
           }
         ],
         "id": "1745349171715"

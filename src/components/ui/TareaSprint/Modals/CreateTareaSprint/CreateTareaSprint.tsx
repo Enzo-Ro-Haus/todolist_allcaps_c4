@@ -3,6 +3,8 @@ import { ICreateTarea } from "../../../../../types/Tarea/ICreateTarea";
 import { useSprintStore } from "../../../../../store/sprintStore";
 import { addTareaToSprintController } from "../../../../../data/sprintController";
 import styles from "./CreateTareaSprint.module.css";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 interface Props {
     onClose: () => void;
@@ -41,7 +43,7 @@ export const CreateTareaSprint: FC<Props> = ({ onClose, sprintId }) => {
     return (
         <div className="overlay">
             <form className={styles.createTarea_form} onSubmit={handleSubmit}>
-                <h3 className={styles.createTarea_tittle}>Crear tarea en sprint</h3>
+                <h3 className={styles.createTarea_title}>Crear tarea en sprint</h3>
                 <input
                     className={styles.createTarea_input}
                     type="text"
@@ -50,7 +52,7 @@ export const CreateTareaSprint: FC<Props> = ({ onClose, sprintId }) => {
                     onChange={(e) => setTitulo(e.target.value)}
                     required
                 />
-                <textarea
+                <input
                     className={styles.createTarea_input}
                     placeholder="Descripción"
                     value={descripcion}
@@ -64,10 +66,12 @@ export const CreateTareaSprint: FC<Props> = ({ onClose, sprintId }) => {
                     onChange={(e) => setFechaLimite(e.target.value)}
                     required
                 />
-                <div className={styles.createTarea_containerButtons}>
-                    <button type="button" className={styles.createTarea_button} onClick={onClose}>Cerrar</button>
-                    <button type="submit" className={styles.createTarea_button}>Crear</button>
-                </div>
+                <Stack direction={"row"} spacing={20} className={styles.createTarea_containerButtons}>
+                    <Button type="button" variant="contained" color="error"
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px" }} onClick={onClose}>Cerrar</Button>
+                    <Button type="submit" variant="contained" color="success"
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px" }}>Crear</Button>
+                </Stack>
             </form>
         </div>
     );

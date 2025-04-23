@@ -2,6 +2,8 @@ import { FC, useEffect, useState } from "react";
 import { useSprintStore } from "../../../../../store/sprintStore";
 import { updateTareaInSprintController } from "../../../../../data/sprintController";
 import styles from "./UpdateTareaSprint.module.css";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 interface Props {
     onClose: () => void;
@@ -55,7 +57,7 @@ export const UpdateTareaSprint: FC<Props> = ({ onClose, sprintId }) => {
                     onChange={(e) => setTitulo(e.target.value)}
                     required
                 />
-                <textarea
+                <input
                     className={styles.updateTarea_input}
                     value={descripcion}
                     onChange={(e) => setDescripcion(e.target.value)}
@@ -68,10 +70,12 @@ export const UpdateTareaSprint: FC<Props> = ({ onClose, sprintId }) => {
                     onChange={(e) => setFechaLimite(e.target.value)}
                     required
                 />
-                <div className={styles.updateTarea_containerButtons}>
-                    <button type="button" className={styles.updateTarea_button} onClick={onClose}>Cerrar</button>
-                    <button type="submit" className={styles.updateTarea_button}>Aceptar</button>
-                </div>
+                <Stack direction={"row"} spacing={20} className={styles.createTarea_containerButtons}>
+                    <Button type="button" variant="contained" color="error"
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px" }} onClick={onClose}>Cerrar</Button>
+                    <Button type="submit" variant="contained" color="success"
+                    sx={{ width: "10rem", height: "2rem", borderRadius: "5px" }}>Crear</Button>
+                </Stack>
             </form>
         </div>
     );

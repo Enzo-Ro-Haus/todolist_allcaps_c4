@@ -32,7 +32,7 @@
     flex: 1;
     min-height: 1rem;
     width: 2rem;
-    background-color: #70AE6E;
+    background-color: #d9e1e6;
     border: 2px solid black;
     border-radius: 5px;
     padding: 1rem;
@@ -44,7 +44,7 @@
 }
 
 .tareaSprint_card {
-    background-color: #adc3a0;
+    background-color: #70AE6E;
     border-radius: 0.5rem;
     padding: 1rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -64,9 +64,8 @@
 }
 
 .tareaSprint_buttonEnviar {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
+    background-color: #70AE6E;
+    border: 2px solid #000;
     padding: 0.4rem 0.6rem;
     border-radius: 0.3rem;
     font-size: 0.8rem;
@@ -77,9 +76,8 @@
 }
 
 .tareaSprint_buttonEstado {
-    background-color: #f39c12;
-    color: white;
-    border: none;
+    background-color: #70AE6E;
+    border: 2px solid black;
     padding: 0.4rem 0.6rem;
     border-radius: 0.3rem;
     font-size: 0.8rem;
@@ -90,9 +88,8 @@
 }
 
 .tareaSprint_buttonAction {
-    background-color: #6c63ff;
-    color: white;
-    border: none;
+    background-color: #70AE6E;
+    border: 2px solid;
     padding: 0.4rem 0.5rem;
     border-radius: 0.3rem;
     font-size: 0.85rem;
@@ -107,7 +104,7 @@
 
 /* Ajuste para botón de eliminar (color rojo) */
 .tareaSprint_buttonAction:nth-child(5) {
-    background-color: #e74c3c;
+    background-color: #70AE6E;
 }
 .tareaSprint_container {
     padding: 1.5rem;
@@ -146,89 +143,8 @@
     gap: 0.5rem;
 }
 
-.tareaSprint_buttonAdd:hover {
-    background-color: #574fd6;
-}
-
 .tareaSprint_sections {
     display: flex;
     gap: 1.5rem;
     justify-content: space-between;
-}
-
-.tareaSprint_column {
-    flex: 1;
-    background-color: #d9e1e6;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.tareaSprint_card {
-    background-color: #88a478;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.tareaSprint_card p {
-    margin: 0.25rem 0;
-    font-size: 0.95rem;
-}
-
-.tareaSprint_Actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.8rem;
-}
-
-.tareaSprint_buttonEnviar {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 0.4rem 0.6rem;
-    border-radius: 0.3rem;
-    font-size: 0.8rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.tareaSprint_buttonEstado {
-    background-color: #f39c12;
-    color: white;
-    border: none;
-    padding: 0.4rem 0.6rem;
-    border-radius: 0.3rem;
-    font-size: 0.8rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.tareaSprint_buttonAction {
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    padding: 0.4rem 0.5rem;
-    border-radius: 0.3rem;
-    font-size: 0.85rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-.tareaSprint_buttonAction:hover {
-    opacity: 0.85;
-}
-
-/* Ajuste para botón de eliminar (color rojo) */
-.tareaSprint_buttonAction:nth-child(5) {
-    background-color: #e74c3c;
 }
