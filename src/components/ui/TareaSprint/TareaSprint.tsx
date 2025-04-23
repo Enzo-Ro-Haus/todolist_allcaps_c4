@@ -27,7 +27,7 @@ export const TareasSprint = () => {
 
     if (!sprint) return <p>No hay sprint activo</p>;
 
-    const handleMoverEstado = (tarea: any) => {
+    const handleMoverEstado = async (tarea: any) => {
         const estados = ['pendiente', 'en_progreso', 'completado'];
         const estadoActualIndex = estados.indexOf(tarea.estado);
         const siguienteEstado = estados[(estadoActualIndex + 1) % estados.length];
@@ -35,11 +35,34 @@ export const TareasSprint = () => {
         const sprintId = useSprintStore.getState().activeSprint?.id;
         if (!sprintId) return;
     
-        useSprintStore.getState().updateTareaSprint(sprintId, {
-            ...tarea,
-            estado: siguienteEstado
-        });
-
+        try {
+            const res = await fetch(`${API_URL}/sprintList`);
+            const data = await res.json();
+    
+            const nuevosSprints = data.sprints.map((spr: any) => {
+                if (spr.id === sprintId) {
+                    const nuevasTareas = spr.tareas.map((t: any) =>
+                        t.id === tarea.id ? { ...t, estado: siguienteEstado } : t
+                    );
+                    return { ...spr, tareas: nuevasTareas };
+                }
+                return spr;
+            });
+    
+            await fetch(`${API_URL}/sprintList`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ sprints: nuevosSprints }),
+            });
+    
+            useSprintStore.getState().updateTareaSprint(sprintId, {
+                ...tarea,
+                estado: siguienteEstado
+            });
+    
+        } catch (error) {
+            console.error("Error al mover el estado de la tarea:", error);
+        }
     };
 
     const handleEnviarAlBacklog = async (tarea: any, sprintId: string) => {
