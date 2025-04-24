@@ -1,34 +1,44 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useBacklogStore } from '../../../store/backlogStore';
 import { getBacklogController } from '../../../data/backlogController';
 import { FaPlus } from 'react-icons/fa';
 import { TareasBacklog } from './TareasBacklog';
-import { UpdateTarea } from './Modals/UpdateTarea/UpdateTarea';
-import { DeleteTarea } from './Modals/DeleteTarea/DeleteTarea';
 import { ViewTarea } from './Modals/ViewTarea/ViewTarea';
-import { CreateTarea } from './Modals/CreateTarea/CreateTarea';
-import styles from './Backlog.module.css'
+import styles from './Backlog.module.css';
+import { ITarea } from '../../../types/Tarea/ITarea';
+import { TareaModal } from './Modals/TareaModal';
 
 export const Backlog = () => {
+    const tareas = useBacklogStore((state) => state.tareas);
+    const [showTareaModal, setShowTareaModal] = useState(false);
+    const [activeTarea, setActiveTarea] = useState<ITarea | null>(null);
+    const [modalMode, setModalMode] = useState<"create" | "update">("create");
+    const [showViewTarea, setShowViewTarea] = useState(false);
 
-        const tareas = useBacklogStore((state) => state.tareas);
-        const [showCreateTarea, setShowCreateTarea] = useState(false);
-        const [showUpdateTarea, setShowUpdateTarea] = useState(false);
-        const [showDeleteTarea, setShowDeleteTarea] = useState(false);
-        const [showViewTarea, setShowViewTarea] = useState(false);
+    useEffect(() => {
+        const fetchDataBacklog = async () => {
+            try {
+                const response = await getBacklogController();
+                useBacklogStore.setState({ tareas: response });
+            } catch (error) {
+                console.error("Error cargando las tareas: ", error);
+            }
+        };
+        fetchDataBacklog();
+    }, []);
+    
+    const handleCreateClick = () => {
+        setActiveTarea(null);
+        setModalMode("create");
+        setShowTareaModal(true);
+    };
 
-        useEffect(() => {
-            const fetchDataBacklog = async () => {
-                try {
-                    const response = await getBacklogController();
-                    useBacklogStore.setState({ tareas: response });
-                } catch (error) {
-                    console.error("Error cargando las tareas: ", error);
-                }
-            };
-            fetchDataBacklog();
-        }, []);
-        
+    const handleEditClick = (tarea: ITarea) => {
+        setActiveTarea(tarea);
+        setModalMode("update");
+        setShowTareaModal(true);
+    };
+
     return (
         <>
         <div>
@@ -36,7 +46,7 @@ export const Backlog = () => {
         </div>
         <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
             <h3 style={{ display: "flex", gap: "2rem", alignItems: "center" }}>Tareas en el Backlog</h3>
-            <button className={styles.backlog_tareaButtonAdd} onClick={() => setShowCreateTarea(true)}>
+            <button className={styles.backlog_tareaButtonAdd} onClick={handleCreateClick}>
                 Crear Tarea <FaPlus />
             </button>
         </div>
@@ -45,8 +55,8 @@ export const Backlog = () => {
                 <TareasBacklog
                     key={tra.id}
                     tarea={tra}
-                    updateTarea={() => setShowUpdateTarea(true)}
-                    deleteTarea={() => setShowDeleteTarea(true)}
+                    updateTarea={() => handleEditClick(tra)}
+                    deleteTarea={() => {}} 
                     viewTarea={() => setShowViewTarea(true)}
                 />
             ))
@@ -57,10 +67,8 @@ export const Backlog = () => {
 
         )}
 
-        {showUpdateTarea && <UpdateTarea onClose={() => setShowUpdateTarea(false)} />}
-        {showDeleteTarea && <DeleteTarea onClose={() => setShowDeleteTarea(false)} />}
+        {showTareaModal && <TareaModal mode={modalMode} initialValues={activeTarea || undefined} onClose={() => setShowTareaModal(false)} />}
         {showViewTarea && <ViewTarea onClose={() => setShowViewTarea(false)} />}
-        {showCreateTarea && <CreateTarea onClose={() => setShowCreateTarea(false)} />}
         </>
-    )
-}
+    );
+};

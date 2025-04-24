@@ -1,10 +1,12 @@
 import { FC, useState } from "react";
+import { FaArrowRight, FaEdit, FaEye, FaTrash } from "react-icons/fa";
+import { useBacklogStore } from "../../../store/backlogStore";
+import { useSprintStore } from "../../../store/sprintStore";
+import Swal from "sweetalert2";
+import { API_URL } from "../../../utils/constantes";
 import styles from "./TareasBacklog.module.css";
 import { ITarea } from "../../../types/Tarea/ITarea";
-import { useBacklogStore } from "../../../store/backlogStore";
-import { FaArrowRight, FaEdit, FaEye, FaTrash } from "react-icons/fa";
-import { useSprintStore } from "../../../store/sprintStore";
-import { API_URL } from "../../../utils/constantes";
+import { deleteTareaBacklogController } from "../../../data/backlogController";
 
 interface ITareasBackLogProps {
     tarea: ITarea;
@@ -16,7 +18,6 @@ interface ITareasBackLogProps {
 export const TareasBacklog: FC<ITareasBackLogProps> = ({
     tarea,
     updateTarea,
-    deleteTarea,
     viewTarea
 }) => {
     const [selectedSprintId, setSelectedSprintId] = useState("");
@@ -28,9 +29,30 @@ export const TareasBacklog: FC<ITareasBackLogProps> = ({
 
     const handleDeleteTarea = () => {
         useBacklogStore.getState().setActiveTarea(tarea);
-        deleteTarea();
+        
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: `Esta tarea será eliminada: "${tarea.titulo}"`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const tareaId = tarea.id;
+                    useBacklogStore.getState().removeTarea(tareaId);
+                    await deleteTareaBacklogController(tareaId); 
+                    useBacklogStore.getState().clearActiveTarea(); 
+                    Swal.fire("Eliminada", "La tarea fue eliminada correctamente", "success");
+                } catch (error) {
+                    console.error("Error al eliminar tarea:", error);
+                    Swal.fire("Error", "No se pudo eliminar la tarea", "error");
+                }
+            }
+        });
     };
-
+    
     const handleViewTarea = () => {
         useBacklogStore.getState().setActiveTarea(tarea);
         viewTarea();
@@ -81,14 +103,14 @@ export const TareasBacklog: FC<ITareasBackLogProps> = ({
                     onClick={handleMoverAlSprint}
                     disabled={!selectedSprintId}
                 >
-                    <FaArrowRight /> Enviar a
+                    Enviar a <FaArrowRight />
                 </button>
                 <select
                     value={selectedSprintId}
                     onChange={(e) => setSelectedSprintId(e.target.value)}
                     className={styles.tareasBacklog_input}
                 >
-                    <option value="">Seleccione una sprint</option>
+                    <option value="">Seleccione un sprint</option>
                     {useSprintStore.getState().sprints.map((spr) => (
                         <option key={spr.id} value={spr.id}>{spr.nombre}</option>
                     ))}
@@ -100,4 +122,5 @@ export const TareasBacklog: FC<ITareasBackLogProps> = ({
         </div>
     );
 };
+
 

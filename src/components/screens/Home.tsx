@@ -4,9 +4,7 @@ import { useSprintStore } from '../../store/sprintStore';
 import { SprintSider } from '../ui/Sprint/SprintSider';
 import { useEffect, useState, FC } from 'react';
 import { getSprintListController } from '../../data/sprintController';
-import { CreateSprint } from '../ui/Sprint/Modals/CreateSprint/CreateSprint';
-import { UpdateSprint } from '../ui/Sprint/Modals/UpdateSprint/UpdateSprint';
-import { DeleteSprint } from '../ui/Sprint/Modals/DeleteSprint/DeleteSprint';
+import { SprintModal } from '../ui/Sprint/Modals/SprintModal';  // Asegúrate de importar el modal unificado
 import { TareasSprint } from '../ui/TareaSprint/TareaSprint';
 import { Backlog } from '../ui/Backlog/Backlog';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -15,21 +13,17 @@ interface HomeProps {
     vista: "backlog" | "sprint";
 }
 
-export const Home:FC<HomeProps> = ({vista}) =>{
+export const Home: FC<HomeProps> = ({ vista }) => {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    
     const sprints = useSprintStore((state) => state.sprints);
-    
 
-
-    const [showCreateSprint, setShowCreateSprint] = useState(false);
-    const [showUpdateSprint, setShowUpdateSprint] = useState(false);
-    const [showDeleteSprint, setShowDeleteSprint] = useState(false);
+    const [showSprintModal, setShowSprintModal] = useState(false);
+    const [mode, setMode] = useState<"create" | "update">("create");
+    const [initialValues, setInitialValues] = useState<any>(null);
 
     useEffect(() => {
-
         const fetchDataSprints = async () => {
             try {
                 const response = await getSprintListController();
@@ -47,9 +41,13 @@ export const Home:FC<HomeProps> = ({vista}) =>{
             const sprint = sprints.find((s) => s.id === id);
             if (sprint) {
                 useSprintStore.getState().setActiveSprint(sprint);
+                setInitialValues(sprint);
+                setMode("update");
             }
         } else {
             useSprintStore.getState().clearActiveSprint();
+            setMode("create");
+            setInitialValues(null);
         }
     }, [vista, id, sprints]);
 
@@ -65,7 +63,9 @@ export const Home:FC<HomeProps> = ({vista}) =>{
                     <div className={styles.home_siderTareasContainer}>
                         <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
                             <h3 style={{ fontSize: "1.5rem" }}>Lista Sprints</h3>
-                            <button className={styles.home_siderButtonAdd} onClick={() => setShowCreateSprint(true)}><FaPlus /></button>
+                            <button className={styles.home_siderButtonAdd} onClick={() => setShowSprintModal(true)}>
+                                <FaPlus />
+                            </button>
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                             {sprints && sprints.length > 0 ? (
@@ -73,8 +73,12 @@ export const Home:FC<HomeProps> = ({vista}) =>{
                                     <SprintSider
                                         key={spr.id}
                                         sprint={spr}
-                                        updateSprint={() => setShowUpdateSprint(true)}
-                                        deleteSprint={() => setShowDeleteSprint(true)}
+                                        updateSprint={() => {
+                                            setInitialValues(spr);
+                                            setMode("update");
+                                            setShowSprintModal(true);
+                                        }}
+                                        deleteSprint={() => {}}
                                         viewSprint={() => navigate(`/sprint/${spr.id}`)}
                                     />
                                 ))
@@ -84,16 +88,20 @@ export const Home:FC<HomeProps> = ({vista}) =>{
                         </div>
                     </div>
                 </div>
-                
+
                 <div className={styles.home_contentVistas}>
                     {vista === "backlog" ? <Backlog /> : <TareasSprint />}
                 </div>
             </div>
 
-            {/* Modales de Sprint */}
-            {showCreateSprint && <CreateSprint onClose={() => setShowCreateSprint(false)} />}
-            {showUpdateSprint && <UpdateSprint onClose={() => setShowUpdateSprint(false)} />}
-            {showDeleteSprint && <DeleteSprint onClose={() => setShowDeleteSprint(false)} />}
+            {showSprintModal && (
+                <SprintModal
+                    mode={mode}
+                    onClose={() => setShowSprintModal(false)}
+                    initialValues={initialValues}
+                />
+            )}
         </div>
     );
 };
+
