@@ -1,6 +1,5 @@
-.form {
+.tareaModal_form {
     width: 30rem;
-    height: 20rem;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -10,16 +9,26 @@
     justify-content: space-between;
 }
 
-.title {
+.tareaModal_tittle {
     font-size: 2rem;
 }
 
-.createSprint_input {
+.tareaModal_input {
     height: 2rem;
-    font-size: 15px;
+    font-size: medium;
     border-radius: 5px;
     border: 1px solid;
     padding: 5px;
-    align-items: center;
-    font-size: medium;
+    margin-bottom: 0.3rem;
+}
+
+.tareaModal_containerButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
 }
